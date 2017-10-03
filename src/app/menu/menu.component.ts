@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DISHES } from './../shared/dishes';
 import { Dish } from './../shared/dish';
+
+import { DishService } from './../services/dish.service';
+//let the service fetch information for us
 
 @Component({
   selector: 'app-menu',
@@ -10,13 +12,14 @@ import { Dish } from './../shared/dish';
 })
 export class MenuComponent implements OnInit {
 
-  dishes = DISHES;
+  dishes: Dish[]; //*no longer need to paste information from class DISHES
 
   selectedDish: Dish;
 
-  constructor() { }
+  constructor(private dishService: DishService) { } //every time when called, it'll create a new dishService object
 
   ngOnInit() {
+    this.dishes = this.dishService.getDishes(); //* fetch information from Angular Service instead
   }
 
   onSelect(dish: Dish) {
