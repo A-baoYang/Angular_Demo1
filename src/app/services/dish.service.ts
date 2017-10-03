@@ -13,4 +13,12 @@ export class DishService {
     // to supply js array to any other applications
   }
 
+  getDish(id: number): Dish {
+    return DISHES.filter((dish) => (dish.id === id))[0];
+  }
+
+  getFeaturedDish(): Dish {
+    return DISHES.filter((dish) => (dish.feature))[0];
+  }
+
 }
