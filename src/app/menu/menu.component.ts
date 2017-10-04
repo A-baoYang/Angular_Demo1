@@ -19,7 +19,8 @@ export class MenuComponent implements OnInit {
   constructor(private dishService: DishService) { } //every time when called, it'll create a new dishService object
 
   ngOnInit() {
-    this.dishes = this.dishService.getDishes(); //* fetch information from Angular Service instead
+    this.dishService.getDishes()
+      .then(dishes => this.dishes = dishes); //* fetch information from Angular Service instead
   }
 
   onSelect(dish: Dish) {
