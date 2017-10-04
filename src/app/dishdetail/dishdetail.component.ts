@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { MatProgressSpinner } from '@angular/material';
 
 import { Dish } from './../shared/dish';
 import { DishService } from './../services/dish.service';
