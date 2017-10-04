@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormControl, FormControlName, FormGroup, FormGroupDirective, FormBuilder } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { 
   MatButtonModule, 
@@ -12,8 +12,14 @@ import {
   CompatibilityModule, 
   MatGridListModule,
   MatInputModule,
+  MatInput,
+  MatFormFieldControl,
+  MatFormFieldModule,
+  MatFormField,
   MatDialogModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatSelectModule,
+  MatOptionModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -50,6 +56,7 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     MatButtonModule,
     MatMenuModule,
@@ -59,6 +66,9 @@ import { LoginComponent } from './login/login.component';
     MatInputModule,
     MatDialogModule,
     MatCheckboxModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatFormFieldModule,
     FlexLayoutModule,
     CompatibilityModule,
     MatGridListModule,

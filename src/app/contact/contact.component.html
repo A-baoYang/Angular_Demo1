@@ -35,4 +35,53 @@
           </div>
         </div>
       </div>
+
+      <div fxFlex fxFlexOffset="20px" class="form-size">
+        <h3>Send Us Your Feedback!</h3>
+        <p>{{ feedbackForm.value | json }}  {{ feedbackForm.status | json }} </p>
+
+        <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" > <!--[formGroup] is use to corresponding to form model-->
+          <p>
+            <mat-input-container class="half-width" dividerColor="{{(feedbackForm.get('firstname').hasError('required') && feedbackForm.get('firstname').touched) ? 'warn' : 'primary' }}">
+              <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
+              <mat-hint>
+                <span [hidden]="!(feedbackForm.get('firstname').hasError('required') && feedbackForm.get('firstname').touched)" >First Name is required!</span>
+              </mat-hint>
+            </mat-input-container>
+            <mat-input-container class="half-width">
+              <input matInput formControlName="lastname" placeholder="Last Name" type="text">
+            </mat-input-container>
+            <mat-input-container class="half-width">
+              <input matInput formControlName="telnum" placeholder="Tel. Number" type="tel">
+            </mat-input-container>
+            <mat-input-container class="half-width" dividerColor="{{(feedbackForm.get('email').hasError('required') && feedbackForm.get('email').touched) ? 'warn' : 'primary' }}">
+              <input matInput formControlName="email" placeholder="Email" type="email" required>
+              <mat-hint>
+                <span [hidden]="!(feedbackForm.get('email').hasError('required') && feedbackForm.get('email').touched)" >Email is required!</span>
+              </mat-hint>
+            </mat-input-container>
+          </p>
+          <table class="form-size">
+            <td>
+              <mat-checkbox formControlName="agree">May us Contact you?</mat-checkbox>
+            </td>
+            <td>
+              <mat-select placeholder="How?" formControlName="contacttype" >
+                <mat-option *ngFor="let ctype of contactType" [value]="ctype" >
+                  {{ ctype }}
+                </mat-option>
+              </mat-select>
+            </td>
+          </table>
+          <p>
+            <mat-input-container class="full-width" dividerColor="{{(feedbackForm.get('message').hasError('required') && feedbackForm.get('message').touched) ? 'warn' : 'primary' }}">
+              <textarea matInput formControlName="message" placeholder="Type your feedback here" rows="12" required></textarea>
+              <mat-hint>
+                <span [hidden]="!(feedbackForm.get('message').hasError('required') && feedbackForm.get('message').touched)" >Message is required!</span>
+              </mat-hint>
+            </mat-input-container>
+          </p>
+          <button mat-button class="background-primary text-floral-white" type="submit" [disabled]="feedbackForm.invalid" >Submit</button>
+        </form>
+      </div>
 </div>
