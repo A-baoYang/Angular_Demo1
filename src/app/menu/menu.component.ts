@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatProgressSpinner } from '@angular/material';
 
 import { Dish } from './../shared/dish';
+import { baseURL } from './../shared/baseurl';
 
 import { DishService } from './../services/dish.service';
 //let the service fetch information for us
@@ -15,17 +16,18 @@ export class MenuComponent implements OnInit {
 
   dishes: Dish[]; //*no longer need to paste information from class DISHES
 
-  selectedDish: Dish;
+  //selectedDish: Dish;
 
-  constructor(private dishService: DishService) { } //every time when called, it'll create a new dishService object
+  constructor(private dishService: DishService,
+    @Inject('BaseURL') private baseURL) { } //every time when called, it'll create a new dishService object
 
   ngOnInit() {
     this.dishService.getDishes()
       .subscribe(dishes => this.dishes = dishes); //* fetch information from Angular Service instead
   }
 
-  onSelect(dish: Dish) {
-    this.selectedDish = dish;
-  }
+  // onSelect(dish: Dish) {
+  //   this.selectedDish = dish;
+  // }
 
 }

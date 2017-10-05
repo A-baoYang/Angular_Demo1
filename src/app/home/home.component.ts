@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatProgressSpinner } from '@angular/material';
 
 import { Dish } from './../shared/dish';
 import { DishService } from './../services/dish.service';
 import { Promotion } from './../shared/promotion';
 import { PromotionService } from './../services/promotion.service';
+import { baseURL } from './../shared/baseurl';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class HomeComponent implements OnInit {
   promotion: Promotion;
 
   constructor(private dishService: DishService,
-    private promotionService: PromotionService) { }
+    private promotionService: PromotionService,
+    @Inject('BaseURL') private baseURL) { }
 
   ngOnInit() {
     this.dishService.getFeaturedDish()

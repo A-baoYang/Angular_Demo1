@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MatProgressSpinner } from '@angular/material';
@@ -7,6 +7,7 @@ import 'rxjs/add/operator/switchMap'
 
 import { Dish } from './../shared/dish';
 import { DishService } from './../services/dish.service';
+import { baseURL } from './../shared/baseurl';
 
 @Component({
   selector: 'app-dishdetail',
@@ -23,7 +24,8 @@ export class DishdetailComponent implements OnInit {
   //let individual dishdetail shows by routing change
   constructor(private dishService: DishService,
     private route: ActivatedRoute,
-    private location: Location ) { }
+    private location: Location,
+    @Inject('BaseURL') private baseURL ) { }
 
   ngOnInit() {
 
