@@ -15,6 +15,7 @@ import { DishService } from './../services/dish.service';
 export class MenuComponent implements OnInit {
 
   dishes: Dish[]; //*no longer need to paste information from class DISHES
+  errMess: string;
 
   //selectedDish: Dish;
 
@@ -23,7 +24,8 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.dishService.getDishes()
-      .subscribe(dishes => this.dishes = dishes); //* fetch information from Angular Service instead
+      .subscribe(dishes => this.dishes = dishes,
+        errMess => this.errMess = <any>errMess); //* fetch information from Angular Service instead
   }
 
   // onSelect(dish: Dish) {

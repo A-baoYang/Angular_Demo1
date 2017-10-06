@@ -31,21 +31,24 @@ export class DishService {
 
   getDish(id: number): Observable<Dish> {
     return this.http.get(baseURL + 'dishes/' + id)
-      .map(res => { return this.processHttpmsgService.extractData(res); });
+      .map(res => { return this.processHttpmsgService.extractData(res); })
+      .catch(error => { return this.processHttpmsgService.handleError(error); });
     //return Observable.of(DISHES.filter((dish) => (dish.id === id))[0]).delay(1500);
     //return Promise.resolve(DISHES.filter((dish) => (dish.id === id))[0]);
   }
 
   getFeaturedDish(): Observable<Dish> {
     return this.http.get(baseURL + 'dishes?featured=true')
-      .map(res => { return this.processHttpmsgService.extractData(res)[0]; });
+      .map(res => { return this.processHttpmsgService.extractData(res)[0]; })
+      .catch(error => { return this.processHttpmsgService.handleError(error); });
     //return Observable.of(DISHES.filter((dish) => (dish.feature))[0]).delay(1500);
     //return Promise.resolve(DISHES.filter((dish) => (dish.feature))[0]);
   }
 
   getDishIds(): Observable<number[]> {
     return this.getDishes()
-      .map(dishes => { return dishes.map(dish => dish.id) });
+      .map(dishes => { return dishes.map(dish => dish.id) })
+      .catch(error => { return error; });
     //return Observable.of(DISHES.map(dish => dish.id)).delay(1500);
     // use RxJS map function
   }

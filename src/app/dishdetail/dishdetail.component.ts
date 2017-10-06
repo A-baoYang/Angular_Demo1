@@ -20,6 +20,7 @@ export class DishdetailComponent implements OnInit {
   dishIds: number[];
   prev: number;
   next: number;
+  errMess: string;
 
   //let individual dishdetail shows by routing change
   constructor(private dishService: DishService,
@@ -34,7 +35,8 @@ export class DishdetailComponent implements OnInit {
 
     this.route.params
       .switchMap((params: Params) => this.dishService.getDish(+params['id']))
-      .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id) }); //update current dish id to setPrevNext function sinutanously
+      .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); },
+        errMess => this.errMess = <any>errMess ); //update current dish id to setPrevNext function sinutanously
       
   }
 
