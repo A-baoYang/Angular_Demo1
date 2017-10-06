@@ -20,6 +20,10 @@ import {
   MatDialogModule,
   MatCheckboxModule,
   MatSelectModule,
+  MatSliderModule,
+  MatSlider,
+  MatSliderChange,
+  MatSliderBase,
   MatOptionModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -44,7 +48,7 @@ import { RestangularConfigFactory } from './shared/restConfig';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
-
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 @NgModule({
@@ -57,7 +61,8 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
@@ -75,6 +80,7 @@ import { LoginComponent } from './login/login.component';
     MatDialogModule,
     MatCheckboxModule,
     MatSelectModule,
+    MatSliderModule,
     MatOptionModule,
     MatFormFieldModule,
     FlexLayoutModule,

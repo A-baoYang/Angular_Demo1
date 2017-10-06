@@ -45,3 +45,13 @@ body {
 .flex-spacer {
   flex: 1 1 auto;
 }
+
+.highlight {
+    background-color: $background-pale;
+    // border: 1px solid $primary-color-dark;
+    z-index: 1;
+    transform: scale(1.01);
+    cursor: pointer;
+    font-weight: 1000;
+    font-size: 30px;
+}

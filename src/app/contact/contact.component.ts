@@ -39,7 +39,7 @@ export class ContactComponent implements OnInit {
       'email': 'This is not match the form of email.'
     },
     'message': {
-      'required': 'Message is Required.',
+      'required': 'Message is Required.'
     }
   };
 
