@@ -37,12 +37,15 @@ import { ContactComponent } from './contact/contact.component';
 
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
+import { baseURL } from './shared/baseurl';
 import { ProcessHttpmsgService } from './services/process-httpmsg.service';
+import { RestangularModule, Restangular } from 'ngx-restangular';
+import { RestangularConfigFactory } from './shared/restConfig';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
 
-import { baseURL } from './shared/baseurl';
+
 
 @NgModule({
   declarations: [
@@ -77,7 +80,8 @@ import { baseURL } from './shared/baseurl';
     FlexLayoutModule,
     CompatibilityModule,
     MatGridListModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RestangularModule.forRoot(RestangularConfigFactory)
   ],
   providers: [
     DishService,
