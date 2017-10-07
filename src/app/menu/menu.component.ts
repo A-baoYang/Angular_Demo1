@@ -7,10 +7,20 @@ import { baseURL } from './../shared/baseurl';
 import { DishService } from './../services/dish.service';
 //let the service fetch information for us
 
+import { flyInOut, expand } from './../animations/app.animation';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
+  host: {
+    '[@flyInOut]': 'true',
+    'style': 'display: block;'
+  },
+  animations: [
+    flyInOut(),
+    expand()
+  ]
 })
 export class MenuComponent implements OnInit {
 
